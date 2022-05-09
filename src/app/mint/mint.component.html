@@ -1,0 +1,53 @@
+<div class="minter" *ngIf="finished==false">
+  <h1> Mint NFTs </h1>
+  <label class="label">To Address: </label>
+  <input class="addressinput" type="text" [value]="account">
+  <button class="mint-btn" (click)="mintCoin()"> Mint </button>
+</div>
+
+<div class="summary" *ngIf="finished">
+  <h1 class="sumTitle"> Minting Results </h1>
+    <p class="result"> {{ tokensMinted }} {{ userContract }} NFTs minted
+      to account {{ account }} </p>
+    <div *ngFor="let file of filesList; index as i">
+      <div *ngIf="file!=='Err'">
+        <hr class="split">
+        <p> Image: {{ file.name }} </p>
+        <p> TokenID: {{ file.tokenID }} </p>
+        <p *ngIf="file.tURI"> Token Metadata: {{ file.tURI }} </p>
+      </div>
+  </div>
+</div>
+
+<div class="info" *ngIf="finished">
+  <h1> To view NFTs in wallet: </h1>
+  <div class="result">
+    <ol>
+      <li> Use add token button in metamask wallet </li>
+      <li> Enter contract address: {{ contractAddress }} </li>
+      <li> Set token decimal to 0 </li>
+      <li> NFTs should now appear under assets in wallet </li>
+    </ol>
+  </div>
+
+  <h1> Check Owner </h1>
+  <label class="label"> Token ID </label>
+  <input [(ngModel)]="getownerID"
+      name="ID"
+      type="text"
+      placeholder="1"
+      #ownerIDModel="ngModel">
+  <button class="check-btn" (click)="getOwner()"> Check </button>
+  <p *ngIf="ownerAddr"> Owner of NFT {{ getownerID }} is account {{ this.ownerAddr }} </p>
+
+  <div *ngIf="metacontract==true">
+    <h1> Get Token Metadata </h1>
+    <label class="label"> Token ID </label>
+    <input [(ngModel)]="getID"
+      type="text"
+      placeholder="1"
+      #tokenIDmodel="ngModel">
+    <button class="check-btn" (click)="getURI(getID)"> Check </button>
+    <p *ngIf="tokenURI"> Token URI for NFT {{ getID }} is {{ tokenURI }} </p>
+  </div>
+</div>

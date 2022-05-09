@@ -1,0 +1,265 @@
+/* FILE UPLOAD ELEMENTS */
+.upload {
+  background-color: whitesmoke;
+  width: 450px;
+  border: 2px solid lightgrey;
+  border-radius: 4px;
+  padding: 10px;
+  position: absolute;
+  top: 150px;
+  left: 100px;
+}
+h1 {
+  color: black;
+  font-family: 'Lato', sans-serif;
+  font-size: 150%;
+}
+.form-controlfile {
+  width: 300px;
+  background-color: white;
+  border: 1px solid black;
+  border-radius: 4px;
+  padding: 5px
+}
+.successbtn {
+  font-size: 0.875rem;
+  width: 75px;
+  border: 2px solid #20b2aa;
+  color: #20b2aa;
+  background-color: whitesmoke;
+  border-radius: 3px;
+  padding: 5px;
+  vertical-align: middle;
+  position: relative;
+  left: 3px;
+  bottom: 2px;
+ }
+.successbtn:hover {
+  background-color: #20b2aa;
+  color: white;
+  border-color: #20b2aa;
+}
+h2 {
+  color: black;
+  font-family: 'Lato', sans-serif;
+  font-size: 100%;
+  width: 470px;
+  position: relative;
+  left: 5px;
+}
+.preview {
+  background-color: whitesmoke;
+  width: 450px;
+  border: 2px solid lightgrey;
+  border-radius: 4px;
+  padding: 10px;
+  position: relative;
+  top: 225px;
+  left: 100px;
+}
+hr {
+  border-top: 2px solid #ddd;
+}
+.file-list {
+  position: relative;
+  right: 10px;
+  width: 470px;
+  text-align: left;
+}
+img {
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 5px;
+  margin-left: 5px;
+}
+.name {
+  text-align: center;
+  position: relative;
+  top: -25px;
+}
+.removebtn {
+  background-color: red;
+  color: white;
+  padding: 5px;
+  border: 2px solid red;
+  border-color: red;
+  font-size: 0.875rem;
+  margin-left: 10px;
+  position: absolute;
+  left: 400px;
+  top: 25px;
+}
+.uploadSuccess {
+  margin-top: 5px;
+  padding-top: 5px;
+  height: 20px;
+  width: 200px;
+  border: 2px solid green;
+  font-size: 12px;
+  text-align: center;
+  vertical-align: center;
+  color: darkgreen;
+  background: rgba(0, 128, 0, 0.2);
+}
+/* SELECT METADATA OPTION PANEL */
+.ipfs {
+  text-align: left;
+  background-color: whitesmoke;
+  /*height: 115px; */
+  width: 450px;
+  border: 2px solid lightgrey;
+  border-radius: 4px;
+  padding: 10px;
+  position: absolute;
+  left: 800px;
+  top: 150px;
+}
+.ipfsbtn {
+  font-size: 0.875rem;
+  width: 75px;
+  border: 2px solid #20b2aa;
+  color: #20b2aa;
+  background-color: whitesmoke;
+  border-radius: 3px;
+  padding: 5px;
+  vertical-align: middle;
+  position: relative;
+  left: 130px;
+ }
+.ipfsbtn:hover {
+  background-color: #20b2aa;
+  color: white;
+  border-color: #20b2aa;
+}
+.noipfsbtns {
+  font-size: 0.875rem;
+  width: 75px;
+  border: 2px solid red;
+  color: red;
+  background-color: whitesmoke;
+  border-radius: 3px;
+  padding: 5px;
+  vertical-align: middle;
+  position: relative;
+  left: 135px;
+ }
+.noipfsbtns:hover {
+  background-color: red;
+  color: white;
+  border-color: red;
+}
+/* METADATA FORMS */
+.formcontainer {
+  background-color: whitesmoke;
+  width: 440px;
+  border: 2px solid lightgrey;
+  border-radius: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  padding-bottom: 10px;
+  position: absolute;
+  top: 125px;
+  left: 100px;
+}
+.filename {
+  color: black;
+  font-family: 'Lato', sans-serif;
+  font-size: 100%;
+  display: inline-block;
+  position: absolute;
+  padding-left: 3px;
+}
+.formimg {
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 5px;
+  margin-left: 5px;
+}
+.innerform {
+/*  border-bottom: 1px solid grey; */
+  padding-bottom: 10px;
+}
+label {
+  display: block;
+  padding-right: 20px;
+}
+.imagefield {
+  width: 375px;
+  background-color: white;
+  border: 1px solid grey;
+}
+.desfield, .namefield {
+  width: 375px;
+}
+.image-group {
+  padding-bottom: 10px;
+}
+.panel {
+  background-color: whitesmoke;
+  width: 375px;
+}
+.btnresetform{
+  font-size: 0.875rem;
+  width: 75px;
+  border: 2px solid red;
+  color: red;
+  background-color: whitesmoke;
+  border-radius: 3px;
+  padding: 5px;
+  vertical-align: middle;
+  position: relative;
+  left: 125px;
+}
+.btnresetform:hover {
+  background-color: red;
+  color: white;
+  border-color: red;
+}
+.btn-form {
+  font-size: 0.875rem;
+  width: 75px;
+  border: 2px solid #20b2aa;
+  color: #20b2aa;
+  background-color: whitesmoke;
+  border-radius: 3px;
+  padding: 5px;
+  vertical-align: middle;
+  position: relative;
+  left: 100px;
+ }
+.btn-form:hover {
+  background-color: #20b2aa;
+  color: white;
+  border-color: #20b2aa;
+}
+/* CONTRACTS SELECTION */
+.contract {
+  background-color: whitesmoke;
+  width: 450px;
+  border: 2px solid lightgrey;
+  border-radius: 4px;
+  padding: 10px;
+  padding-bottom: 0px;
+  position: absolute;
+  top: 150px;
+  left: 100px;
+}
+.contract-btn {
+  font-size: 0.875rem;
+  width: 75px;
+  border: 2px solid #20b2aa;
+  color: #20b2aa;
+  background-color: whitesmoke;
+  border-radius: 3px;
+  padding: 5px;
+  vertical-align: middle;
+  position: relative;
+  left: 327px;
+  bottom: 25px;
+
+ }
+.contract-btn:hover {
+  background-color: #20b2aa;
+  color: white;
+  border-color: #20b2aa;
+}

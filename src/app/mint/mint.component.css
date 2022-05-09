@@ -1,0 +1,85 @@
+.minter {
+  background-color: whitesmoke;
+  width: 500px;
+  border: 2px solid lightgrey;
+  border-radius: 4px;
+  padding: 10px;
+  position: absolute;
+  top: 150px;
+  left: 100px;
+}
+.summary {
+  background-color: whitesmoke;
+  width: 500px;
+  border: 2px solid lightgrey;
+  border-radius: 4px;
+  padding: 10px;
+  position: absolute;
+  top: 150px;
+  left: 100px;
+}
+.sumTitle {
+  text-align: center;
+}
+.split {
+  width: 520px;
+  margin: 0;
+  position: relative;
+  right: 10px;
+}
+.addressinput {
+  width: 325px;
+}
+.mint-btn {
+  font-size: 0.875rem;
+  width: 75px;
+  border: 2px solid #20b2aa;
+  color: #20b2aa;
+  background-color: whitesmoke;
+  border-radius: 3px;
+  padding: 5px;
+  vertical-align: middle;
+  position: relative;
+  left: 10px;
+  bottom: 2px;
+ }
+.mint-btn:hover {
+  background-color: #20b2aa;
+  color: white;
+  border-color: #20b2aa;
+}
+.result {
+  color: black;
+  font-family: 'Lato', sans-serif;
+  font-size: 100%;
+}
+.info {
+  text-align: left;
+  background-color: whitesmoke;
+  /*height: 115px; */
+  width: 500px;
+  border: 2px solid lightgrey;
+  border-radius: 4px;
+  padding: 10px;
+  position: absolute;
+  left: 800px;
+  top: 150px;
+}
+.check-btn {
+  font-size: 0.875rem;
+  width: 75px;
+  border: 2px solid #20b2aa;
+  color: #20b2aa;
+  background-color: whitesmoke;
+  border-radius: 3px;
+  padding: 5px;
+  vertical-align: middle;
+  position: relative;
+  left: 3px;
+  bottom: 2px;
+ }
+.check-btn:hover {
+  background-color: #20b2aa;
+  color: white;
+  border-color: #20b2aa;
+}

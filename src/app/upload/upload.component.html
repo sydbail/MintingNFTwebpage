@@ -1,0 +1,190 @@
+<!-- UPLOADING FILES -->
+<div *ngIf="showform == false && showcontracts == false" class="all">
+
+<div class="upload">
+	<h1> Upload Image(s)</h1>
+	<input class="form-controlfile" type="file" multiple= "multiple" accept="image/*"
+		(change)="onChange($event)">
+	<button (click)="onClick()" class="successbtn">
+		Upload
+	</button>
+	<div class="uploadSuccess" *ngIf="msg==='Success'">
+			Upload Successful
+	</div>
+</div>
+
+<div class="preview" *ngIf="FileInfos[0]">
+	<h2> Uploaded Files </h2>
+	<div class="file-list" *ngFor="let file of FileInfos; index as i">
+		<hr>
+		<img [src]="file.url" height="50px" width="50px">
+		<span class="name"> {{file.name}} </span>
+		<button class="removebtn" (click)="onRemove(file)"> X </button>
+	</div>
+</div>
+</div> <!--- here --->
+
+<!-- Ask if user wants to use IPFS-->
+<div class="ipfs" *ngIf="FileInfos[0] && showform==false && showcontracts==false">
+	<h1 class="ipfsTitle">Upload images with IPFS metadata?</h1>
+	<button (click)="ipfsUpload()" class="ipfsbtn"> Yes </button>
+	<button class="noipfsbtns" (click)="showContracts()"> No </button>
+</div>
+
+<!-- METADATA FORMS -->
+<div class="formcontainer" *ngIf="showform==true && showcontracts==false">
+	<h1 class="metatitle"> Enter Metadata Information </h1>
+
+	<label for="sameVars"> Use same metadata for all images: </label>
+	<input type="checkbox" [(ngModel)]="sameVars" name="sameVars">
+
+	<div *ngIf="!sameVars; else linked"> <!--use non linked form -->
+	<form #metaForm="ngForm" (ngSubmit)="submitMeta(FileInfos, sameVars)">
+		<div class="innerform" *ngFor="let file of FileInfos; index as i">
+		<hr>
+			<img [src]="file.url" class="formimg" height="50px" width="50px">
+			<p class="filename"> {{ file.name }} </p>
+
+				<div class="form-group">
+  				<label for="metaname_{{file.id}}">Name:</label>
+  			<input type="text" class="namefield" id="metaname_{{file.id}}"
+								[(ngModel)]="file.mname" name="name_{{file.id}}">
+				</div>
+
+				<div class="form-group">
+  				<label for="metades_{{file.id}}">Description:</label>
+  				<input type="text" class="desfield" id="metades_{{file.id}}"
+								 [(ngModel)]="file.desc" name="description_{{file.id}}">
+				</div>
+
+				<div class="image-group">
+					<label for="hash_{{file.id}}"> Image:</label>
+					<input type="text" class="imagefield" name="image_{{file.id}}"
+								value="{{file.imghash}}" disabled>
+				</div>
+
+				<mat-expansion-panel class="panel">
+    			<mat-expansion-panel-header class="panelheader">
+						<mat-panel-title>Show Additional Fields</mat-panel-title>
+    					</mat-expansion-panel-header>
+
+						<div class="creator-group">
+			  			<label for="creator_{{file.id}}">Creator:</label>
+			  			<input type="text" class="creatorfield" id="creator_{{file.id}}"
+										[(ngModel)]="file.creator" name="creator_{{file.id}}">
+						</div>
+
+						<div class="value-group">
+		  				<label for="value_{{file.id}}">Value:</label>
+		  				<input type="text" class="valuefield" id="value_{{file.id}}"
+										 [(ngModel)]="file.value" name="value_{{file.id}}">
+						</div>
+
+
+						<div class="form-group">
+		  				<label for="date_{{file.id}}">Minting Date:</label>
+		  				<input type="date" class="datefield" id="date_{{file.id}}"
+										 [(ngModel)]="file.date" name="date_{{file.id}}">
+						</div>
+
+						<div class="form-group">
+							<label for="royal_{{file.id}}">Enable Royalities?:</label>
+							<input type="checkbox" class="autofield" id="auto_{{file.id}}"
+										 [(ngModel)]="file.royal" name="royal_{{file.id}}">
+						</div>
+
+  				</mat-expansion-panel>
+
+				</div>
+
+				<button type="submit" class="btn-form" [disabled]="!metaForm.form.valid">Submit</button>
+        <button type="button" class="btnresetform" (click)="metaForm.reset()">Reset</button>
+
+
+			</form>
+			</div> <!--non-linked form -->
+
+			<ng-template #linked> <!--linked form -->
+			<form #metaForm="ngForm" (ngSubmit)="submitMeta(FileInfos, sameVars)">
+				<div class="innerform" *ngFor="let file of FileInfos; index as i">
+				<hr>
+					<img [src]="file.url" height="30px" width="30px">
+					<p class="filename"> Image: {{ file.name }} </p>
+
+						<div class="form-group">
+		  				<label for="metaname_{{file.id}}">Name:</label>
+		  			<input type="text" class="namefield" id="metaname_{{file.id}}"
+										[(ngModel)]="metaname" name="name_{{file.id}}">
+						</div>
+
+						<div class="form-group">
+		  				<label for="metades_{{file.id}}">Description:</label>
+		  				<input type="text" class="desfield" id="metades_{{file.id}}"
+										 [(ngModel)]="metades" name="description_{{file.id}}">
+						</div>
+
+						<div class="image-group">
+							<label for="hash_{{file.id}}"> Image:</label>
+							<input type="text" class="imagefield" name="image_{{file.id}}"
+										value="{{file.imghash}}" disabled>
+						</div>
+
+						<mat-expansion-panel class="panel">
+		    			<mat-expansion-panel-header class="panelheader">
+								<mat-panel-title>Show Additional Fields</mat-panel-title>
+		    					</mat-expansion-panel-header>
+
+								<div class="creator-group">
+					  			<label for="creator_{{file.id}}">Creator:</label>
+					  			<input type="text" class="creatorfield" id="creator_{{file.id}}"
+												[(ngModel)]="file.creator" name="creator_{{file.id}}">
+								</div>
+
+								<div class="value-group">
+				  				<label for="value_{{file.id}}">Value:</label>
+				  				<input type="text" class="valuefield" id="value_{{file.id}}"
+												 [(ngModel)]="file.value" name="value_{{file.id}}">
+								</div>
+
+
+								<div class="form-group">
+				  				<label for="date_{{file.id}}">Minting Date:</label>
+				  				<input type="date" class="datefield" id="date_{{file.id}}"
+												 [(ngModel)]="file.date" name="date_{{file.id}}">
+								</div>
+
+								<div class="form-group">
+									<label for="royal_{{file.id}}">Enable Royalities?:</label>
+									<input type="checkbox" class="autofield" id="auto_{{file.id}}"
+												 [(ngModel)]="file.royal" name="royal_{{file.id}}">
+								</div>
+
+						</mat-expansion-panel>
+						</div>
+						<button type="submit" class="btn-form" [disabled]="!metaForm.form.valid">Submit</button>
+		        <button type="button" class="btnresetform" (click)="metaForm.reset()">Reset</button>
+
+				</form>
+			</ng-template>
+
+
+</div>
+
+<!-- CONTRACTS SELECTION -->
+<!-- maybe move this to contract component when contracts are integrated-->
+<div class="contract" *ngIf="showcontracts && mintingready==false">
+	<form>
+	<label for="contract"> <h1> Select Contract: </h1> </label>
+	<select [(ngModel)]="contractselection" name="contract" id="contract">
+    	<option *ngIf="ipfscontracts" value="IPFSNFT">NFT Tokens with IPFS metadata</option>
+			<option *ngIf="ipfscontracts" value="noTransferIPFSNFT">Non Transferrable NFT Tokens with IPFS metadata</option>
+			<option *ngIf="!ipfscontracts" value="basicNFT">NFT Tokens with no metadata</option>
+			<option *ngIf="!ipfscontracts" value="noTransferbasicNFT">Non Transferrable NFT Tokens with no metadata</option>
+	</select>
+	</form>
+	<button class="contract-btn" (click)="selectContract()"> Submit </button>
+</div>
+
+<div class="child" *ngIf="mintingready">
+	<app-mint [filesList]='FileInfos' [userContract]="contractselection"></app-mint>
+	</div>
